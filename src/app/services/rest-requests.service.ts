@@ -12,11 +12,10 @@ export class RestRequestsService {
   liveServerUrl: string= "http://localhost:8080";
 
   getStocks(): Observable<Stock[]> {
-    return this.httpClient.get<Stock[]>(`${this.liveServerUrl}/stocks`);
-    
+    return this.httpClient.get<Stock[]>(`${this.liveServerUrl}/stock`);
   }
 
-  addStock(stock:Stock): Observable<Stock>{
-    return this.httpClient.post<Stock>(`${this.liveServerUrl}/stocks`,stock)
+  addStock(stock: Stock): Observable<Stock>{
+    return this.httpClient.post<Stock>(`${this.liveServerUrl}/stock`,stock)
   }
 }

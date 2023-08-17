@@ -8,14 +8,14 @@ import { AddStockComponent } from './add-stock/add-stock.component';
 import { DeleteStockComponent } from './delete-stock/delete-stock.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MainMenuComponent } from './main-menu/main-menu.component';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 
 
   const routes: Routes =[
   {path: "view", component:DisplayStockComponent},
   {path: "add", component:AddStockComponent},
-  {path:"del",component:DeleteStockComponent},
+  {path:"del", component:DeleteStockComponent},
   {path: "", component:HomePageComponent},
   {path: "**", component:HomePageComponent}
 ];

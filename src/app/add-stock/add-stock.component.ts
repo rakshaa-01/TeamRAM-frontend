@@ -3,63 +3,52 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Stock } from '../dataModel/Stock';
 import { RestRequestsService } from '../services/rest-requests.service';
 
-
 @Component({
   selector: 'app-add-stock',
   templateUrl: './add-stock.component.html',
   styleUrls: ['./add-stock.component.css']
 })
 export class AddStockComponent {
-constructor(private restService: RestRequestsService){}
+constructor(private restService: RestRequestsService) {}
 
-  newStockForm = new FormGroup({
+    errorMessage= "";
+    newStockForm = new FormGroup
+    ({
     stockTicker: new FormControl(''),
     price: new FormControl(0),
     volume: new FormControl(0),
-    buyOrSell: new FormControl(0),
+    buyOrSell: new FormControl(''),
     statusCode: new FormControl(0)
   });
 
-    errorMessage= ""
-
    handleSubmit() {
-    if(this.newStockForm.value.stockTicker==null){this.errorMessage='You must provide a value'}
-    if(this.newStockForm.value.price==null){this.errorMessage='You must provide a value'}
-    if(this.newStockForm.value.volume==null){this.errorMessage='You must provide a value'}
-    if(this.newStockForm.value.buyOrSell==null){this.errorMessage='You must provide a value'}
-    if(this.newStockForm.value.statusCode==null){this.errorMessage='You must provide a value'}
-    
-      // error is displayed
-    
-
+    if(this.newStockForm.value.stockTicker == null || this.newStockForm.value.price == null || this.newStockForm.value.volume == null || this.newStockForm.value.buyOrSell == null || this.newStockForm.value.statusCode == null) {
+        this.errorMessage = " You must provide a value";
+    }
   
     else{
-      this.errorMessage="";
-    const stock: Stock={id: 0, 
+     this.errorMessage = "";
+     const stock: Stock={
+     id: 0, 
      stockTicker: this.newStockForm.value.stockTicker!,
-     price: this.newStockForm.value.price!,
-     volume: this.newStockForm.value.volume!,
+     price: this.newStockForm.value.price ?? 0,
+     volume: this.newStockForm.value.volume ?? 0,
      buyOrSell: this.newStockForm.value.buyOrSell!,
-     statusCode: this.newStockForm.value.statusCode!
-    }
+     statusCode: this.newStockForm.value.statusCode ?? 0
+    };
      // shortcut: 
-     // const stock1 = {id:0, ...this.newStockForm.value}
+     // const stock1: Stock = {id:0, ...this.newStockForm.value}
      // console.log(stock1)
 
      this.restService.addStock(stock).subscribe(
-      { next: data =>alert("Stock added with id "+data.id),
-        error: error => alert("something went wrong"+error)
-      }
-     )
+      { next: data => alert("Stock added with ID: " + data.id),
+        error: error => alert("Something went wrong! " + error)
+      })
 
      console.log(stock);
-
-
-
     }
     
   }
-
 }
 
 
