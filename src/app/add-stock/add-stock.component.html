@@ -1,0 +1,38 @@
+<h1>Add Stock</h1>
+
+<form [formGroup]="newStockForm">
+    <label for ="stockTicker"  style="margin-right:10px">Stock label</label>
+    <input type="text" id ="name" formControlName="stockTicker">
+    <span style="color:red">{{errorMessage}}</span>
+    <br>
+
+    <label for ="price"  style="margin-right:10px">price</label>
+    <input type="number" id ="name" formControlName="price">
+    <span style="color:red">{{errorMessage}}</span>
+
+    <br>
+
+    <label for ="volume"  style="margin-right:10px">volume</label>
+    <input type="number" id ="name" formControlName="volume">
+    <span style="color:red">{{errorMessage}}</span>
+
+    <br>
+
+    <label for ="buyOrSell"  style="margin-right:10px">buyOrSell</label>
+    <input type="number" id ="name" formControlName="buyOrSell">
+    <span style="color:red">{{errorMessage}}</span>
+    
+    <br>
+
+    <label for ="statusCode"  style="margin-right:10px">statusCode</label>
+    <input type="number" id ="name" formControlName="statusCode">
+    <span style="color:red">{{errorMessage}}</span>
+    
+    <br>
+
+    <button type="Submit">ADD</button>
+
+
+
+</form>
+
