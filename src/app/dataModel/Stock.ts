@@ -3,6 +3,6 @@ export interface Stock {
     stockTicker: string,
     price: number,
     volume: number,
-    buyOrSell: number
+    buyOrSell: string,
     statusCode: number
 }

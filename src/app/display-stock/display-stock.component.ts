@@ -10,15 +10,14 @@ import { RestRequestsService } from '../services/rest-requests.service';
 export class DisplayStockComponent implements OnInit {
 
   constructor(private restService: RestRequestsService){}
-  stocks: Array<Stock>=[];
-  errorMessage: string="";
+  stocks: Array<Stock> = [];
+  errorMessage: string = "";
 
 
   ngOnInit(): void {
     this.restService.getStocks().subscribe(
-      {next: data => {this.stocks=data},
-    error: error=> {this.errorMessage=error}}
-
+      {next: data => {this.stocks = data},
+       error: error=> {this.errorMessage = error}}
     )
   }
 
