@@ -3,32 +3,31 @@
 <form [formGroup]="newStockForm" (submit) = "handleSubmit()">
     <label for ="stockTicker" style="margin-right:10px">Stock Label: </label>
     <input type="text" id ="name" formControlName = "stockTicker">
-    <span style="color:red">{{errorMessage}}</span>
+    <span style="color:red">{{errorMessage1}}</span>
     <br><br>
 
     <label for ="price" style="margin-right:10px">Price: </label>
     <input type="number" id ="name" formControlName = "price">
-    <span style="color:red">{{errorMessage}}</span>
+    <span style="color:red">{{errorMessage2}}</span>
 
     <br><br>
 
     <label for ="volume" style="margin-right:10px">Volume: </label>
     <input type="number" id ="name" formControlName = "volume">
-    <span style="color:red">{{errorMessage}}</span>
+    <span style="color:red">{{errorMessage3}}</span>
 
     <br><br>
 
-    <label for ="buyOrSell" style="margin-right:10px">BuyOrSell: </label>
+    <label for ="buyOrSell" style="margin-right:10px">BuyOrSell: (BUY/SELL) </label>
     <input type="text" id ="name" formControlName = "buyOrSell">
-    <span style="color:red">{{errorMessage}}</span>
+    <span style="color:red">{{errorMessage4}}</span>
     
     <br><br>
 
-    <label for ="statusCode" style="margin-right:10px">StatusCode: </label>
+    <label for ="statusCode" style="margin-right:10px">StatusCode: (0/1/2)</label>
     <input type="number" id ="name" formControlName = "statusCode">
-    <span style="color:red">{{errorMessage}}</span>
-    
-    <br><br><br>
+    <span style="color:red">{{errorMessage5}}</span>
+    <h6>[0 - Pending, 1 - Filled, 2 - Rejected] </h6>
 
     <button class="submit-button" type="Submit">-- Add --</button>
 </form>
