@@ -18,4 +18,8 @@ export class RestRequestsService {
   addStock(stock: Stock): Observable<Stock>{
     return this.httpClient.post<Stock>(`${this.liveServerUrl}/stock`,stock)
   }
+
+  delStock(id: any): Observable<any> {
+    return this.httpClient.delete<void>(`${this.liveServerUrl}/stock/${id}`);
+  }
 }
