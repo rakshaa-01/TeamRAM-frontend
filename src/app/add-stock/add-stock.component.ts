@@ -11,7 +11,11 @@ import { RestRequestsService } from '../services/rest-requests.service';
 export class AddStockComponent {
 constructor(private restService: RestRequestsService) {}
 
-    errorMessage= "";
+    errorMessage1= "";
+    errorMessage2= "";
+    errorMessage3= "";
+    errorMessage4= "";
+    errorMessage5= "";
     newStockForm = new FormGroup
     ({
     stockTicker: new FormControl(''),
@@ -22,12 +26,38 @@ constructor(private restService: RestRequestsService) {}
   });
 
    handleSubmit() {
-    if(this.newStockForm.value.stockTicker == null || this.newStockForm.value.price == null || this.newStockForm.value.volume == null || this.newStockForm.value.buyOrSell == null || this.newStockForm.value.statusCode == null) {
-        this.errorMessage = " You must provide a value";
+    this.errorMessage1= "";
+    this.errorMessage2= "";
+    this.errorMessage3= "";
+    this.errorMessage4= "";
+    this.errorMessage5= "";
+    if(this.newStockForm.value.stockTicker == '')
+    {
+      this.errorMessage1 = " Stock Label cannot be empty!";
+    }
+    else if(this.newStockForm.value.price == null || this.newStockForm.value.price == 0)
+    {
+      this.errorMessage2 = " Price cannot be empty or zero!";
+    }
+    else if(this.newStockForm.value.volume == null || this.newStockForm.value.volume == 0)
+    {
+      this.errorMessage3 = " Volume cannot be empty or zero!";
+    }
+    else if(this.newStockForm.value.buyOrSell == '')
+    {
+      this.errorMessage4 = " Buy or Sell value cannot be empty!";
+    }
+    else if(this.newStockForm.value.statusCode == null)
+    {
+      this.errorMessage5 = " Status Code cannot be empty!";
     }
   
     else{
-     this.errorMessage = "";
+      this.errorMessage1= "";
+      this.errorMessage2= "";
+      this.errorMessage3= "";
+      this.errorMessage4= "";
+      this.errorMessage5= "";
      const stock: Stock={
      id: 0, 
      stockTicker: this.newStockForm.value.stockTicker!,
