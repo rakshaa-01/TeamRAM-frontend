@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Stock } from '../dataModel/Stock';
@@ -7,7 +7,6 @@ import { Stock } from '../dataModel/Stock';
   providedIn: 'root'
 })
 export class RestRequestsService {
-
   constructor(private httpClient: HttpClient) { }
   liveServerUrl: string= "http://localhost:8080";
 
@@ -19,7 +18,10 @@ export class RestRequestsService {
     return this.httpClient.post<Stock>(`${this.liveServerUrl}/stock`,stock)
   }
 
-  delStock(id: any): Observable<any> {
-    return this.httpClient.delete<void>(`${this.liveServerUrl}/stock/${id}`);
+  delStock(id: any): Observable<string> {
+    return this.httpClient.delete(`${this.liveServerUrl}/stock/${id}`, { responseType: 'text'});
+    //The below code also works for the above operation!
+    //const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+    //return this.httpClient.delete(`${this.liveServerUrl}/stock/${id}`, {headers, responseType: 'text'});
   }
 }

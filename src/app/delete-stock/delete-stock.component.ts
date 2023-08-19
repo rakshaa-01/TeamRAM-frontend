@@ -10,7 +10,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class DeleteStockComponent{
  
   constructor(private restService: RestRequestsService) {}
-  errormsg = "";
+  errormsg: string = "";
+  successmsg: string = "";
+  id1: number | null | undefined;
   deleteStockForm = new FormGroup
   ({
     id: new FormControl(0)
@@ -18,19 +20,29 @@ export class DeleteStockComponent{
   
  handleDelete() 
  {
+  this.id1 = this.deleteStockForm.value.id;
   if(this.deleteStockForm.value.id == 0)
     {
       this.errormsg = " ID cannot be 0!";
     }
   else{
    this.errormsg = "";
-   console.log(this.deleteStockForm.value.id);
+   this.successmsg = "";
    this.restService.delStock(this.deleteStockForm.value.id).subscribe(
-    { next: data => {console.log(data);
-      alert("Stock deleted with ID: " + data.id)},
-      error: error => {console.log(error)
-      alert("Something went wrong! " + error)}
-    })
+    () => {
+      this.successmsg = 'Stock order: ' + this.id1 + ' deleted successfully';
+      console.log('Stock order: ' + this.id1 +' deleted successfully');
+    },
+    (error) => {
+      if (error.status === 404) {
+        this.errormsg = 'Stock order: ' + this.id1 + ' not found';
+      } 
+      else {
+        this.errormsg = 'Error deleting stock order!';
+      }
+      console.error('Error deleting stock order:', error);
+    } 
+  );
 
   }
 }
