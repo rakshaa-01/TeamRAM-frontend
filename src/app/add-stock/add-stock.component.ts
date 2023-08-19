@@ -58,6 +58,7 @@ constructor(private restService: RestRequestsService) {}
       this.errorMessage3= "";
       this.errorMessage4= "";
       this.errorMessage5= "";
+      
      const stock: Stock={
      id: 0, 
      stockTicker: this.newStockForm.value.stockTicker!,
