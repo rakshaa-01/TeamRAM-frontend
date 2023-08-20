@@ -1,8 +1,27 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <div>
-    <a routerLink ="/"><b>Stocks Data Home Page</b></a>
-    <br><hr>
-    <a routerLink ="/view">Display Stock</a>
-    <a routerLink ="/add">Add Stock</a>
-    <a routerLink ="/del">Delete Stock</a>
-    
+    <a routerLink ="/"><b>
+      <p><span><img id="logo" src="https://static.vecteezy.com/system/resources/previews/004/283/938/original/pm-logo-monogram-emblem-style-with-crown-shape-design-template-free-vector.jpg" alt="Logo">
+        <img id="logo1" src="https://github.com/rakshaa-01/hashnode-blogs/assets/97796804/795a47f6-89c1-4eaf-ba0c-57d38dfdb6af" alt="App name">
+      </span></p>
+    </b></a>
+    <br>
+    <p><b>Name: User_01</b></p>
+    <p><b>Email: user_01@outlook.com</b></p>
+    <hr>
+    <div class="container">
+        <label class="hoverable" for="fileInput">
+          <img id="profile-pic" [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'"> 
+          <div class="hover-text"><b>Change</b></div>
+          <div class="background"></div>
+        </label>
+        <br/>
+        <input id="fileInput" type='file' (change)="onSelectFile($event)">
+        <button *ngIf="url" (click)="delete()" >delete</button>
+      </div>
+    <nav>
+     <li><a id="nav" (click)="goToBottom()" routerLink ="/view"><img id="icon-property" src="https://i.ibb.co/k5gtGD8/monitoring.png"><b> Display Stock</b></a></li><br>
+     <li><a id="nav" (click)="goToBottom()" routerLink ="/add"><img id="icon-property" src="https://image.ibb.co/g9bERR/snapshots.png"><b> Add Stock</b></a></li><br>
+     <li><a id="nav" (click)="goToBottom()" routerLink ="/del"><img id="icon-property" src="https://image.ibb.co/evyiLm/backups.png"><b> Delete Stock</b></a> </li>
+  </nav> 
 </div>

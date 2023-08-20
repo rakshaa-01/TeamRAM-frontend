@@ -1,6 +1,110 @@
-a {
-    margin-right: 20px;
-}
 *{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  box-sizing: border-box;  
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+/* Removing the profile picture if screen width < 500 px */
+@media screen and (max-width: 500px) {
+  .container {
+    display: none;
+  }
+}
+@media only screen and (max-width: 600px) {
+  p {
+    font-size:small;
+  }
+}
+@media only screen and (max-width: 400px) {
+  p {
+    font-size:smaller;
+  }
+}
+@media only screen and (max-width: 600px) {
+  div {
+    font-size:small;
+  }
+}
+#nav {
+  text-decoration: none;
+  opacity: 0.75;
+  color: black;
+}
+#nav:hover {
+	opacity: 1;
+}
+nav{
+  list-style: none;
+}
+#icon-property{
+  height: auto;
+  width: 8%;
+  border-radius: 50%;
+}
+
+#logo{
+  position:absolute;
+  top:5px;
+  left:5px;
+  height: auto;
+  width: 5%;
+  border-radius: 50%;
+}
+
+#logo1{
+  position:absolute;
+  top:3px;
+  left:57px;
+  height: auto;
+  width: 18%;
+  border-radius: 0%;
+}
+
+.container {
+  position:absolute;
+  top: 10px;
+  right:10px;
+}
+
+#profile-pic {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.hoverable{
+  position: relative;
+  display: block;
+  cursor: pointer;
+  height: 100px;
+  width: 100px;
+  border: 5px solid #000;
+  border-radius: 50%;
+}
+.hoverable .hover-text{
+  position: absolute;
+  display: none;
+  top: 50%;
+  left:  50%;
+  transform: translate(-50%,-50%);   
+  z-index: 2;
+}
+.hoverable .background{
+  position: absolute;
+  display: none;
+  top: 0;
+  left:  0;
+  bottom: 0;
+  right: 0;
+  background-color:rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 1;
+}
+.hoverable:hover .hover-text{
+  display: block;
+}
+.hoverable:hover .background{
+  display: block;
+}
+
+#fileInput{
+  display: none;
 }

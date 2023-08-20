@@ -19,6 +19,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   {path: "", component:HomePageComponent},
   {path: "**", component:HomePageComponent}
 ];
+// const routerOptions: ExtraOptions = {
+//   anchorScrolling: "enabled"
+//   //scrollPositionRestoration: "enabled"
+// };
+
 @NgModule({
   declarations: [
     AppComponent,
