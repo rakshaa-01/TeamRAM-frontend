@@ -9,6 +9,7 @@ import { Stock } from '../dataModel/Stock';
 export class RestRequestsService {
   constructor(private httpClient: HttpClient) { }
   liveServerUrl: string= "http://localhost:8080";
+  private apiUrl: string = 'https://v588nmxc10.execute-api.us-east-1.amazonaws.com/default/tickerList';
 
   getStocks(): Observable<Stock[]> {
     return this.httpClient.get<Stock[]>(`${this.liveServerUrl}/stock`);

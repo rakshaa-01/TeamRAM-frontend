@@ -16,7 +16,7 @@
      <tr *ngFor="let stock of stocks">
         <td>{{stock.id}}</td>
         <td>{{stock.stockTicker}}</td>
-        <td>{{stock.price | currency: 'INR'}}</td>
+        <td>{{stock.price | currency: 'USD'}}</td>
         <td>{{stock.volume}}</td>
         <td>{{stock.buyOrSell}}</td>
         <td>{{stock.statusCode}}</td>
