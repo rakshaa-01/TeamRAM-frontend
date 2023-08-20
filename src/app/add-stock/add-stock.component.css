@@ -3,5 +3,11 @@
     background-color: rgb(109, 233, 109);
 }
 *{
+    box-sizing: border-box;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+@media only screen and (max-width: 600px) {
+    form {
+      font-size:small;
+    }
 }
