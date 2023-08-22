@@ -30,12 +30,12 @@ export class DeleteStockComponent{
    this.successmsg = "";
    this.restService.delStock(this.deleteStockForm.value.id).subscribe(
     () => {
-      this.successmsg = 'Stock order: ' + this.id1 + ' deleted successfully';
+      this.successmsg = ' Stock order: ' + this.id1 + ' deleted successfully';
       console.log('Stock order: ' + this.id1 +' deleted successfully');
     },
     (error) => {
       if (error.status === 404) {
-        this.errormsg = 'Stock order: ' + this.id1 + ' not found';
+        this.errormsg = ' Stock order: ' + this.id1 + ' not found';
       } 
       else {
         this.errormsg = 'Error deleting stock order!';

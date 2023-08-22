@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Stock } from '../dataModel/Stock';
 import { RestRequestsService } from '../services/rest-requests.service';
+import * as emailjs from 'emailjs-com';
 
 @Component({
   selector: 'app-add-stock',
@@ -11,6 +12,7 @@ import { RestRequestsService } from '../services/rest-requests.service';
 })
 export class AddStockComponent {
 apiUrl = 'http://localhost:8080/check-ticker';
+emailService = emailjs;
 
 constructor(private restService: RestRequestsService, private httpClient: HttpClient) {}
 
@@ -30,11 +32,13 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
 
    handleSubmit() {
     const stockTicker = this.newStockForm.value.stockTicker;
+    const formData = this.newStockForm.value;
     this.errorMessage1= "";
     this.errorMessage2= "";
     this.errorMessage3= "";
     this.errorMessage4= "";
     this.errorMessage5= "";
+
 
     this.httpClient.get<string>(`${this.apiUrl}?stockTicker=${stockTicker}`)
     .subscribe(
@@ -84,20 +88,46 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
            // console.log(stock1)
       
            this.restService.addStock(stock).subscribe(
-            { next: data => alert("Stock added with ID: " + data.id),
+            { next: data => 
+              {
+                alert("Stock added with ID: " + data.id);
+                //this.sendEmailNotification(formData); //DO NOT UNCOMMENT, mail feature is limited to 10 mails, already 4 used
+              },
               error: error => alert("Something went wrong! " + error)
             })
            console.log(stock);
           }
-
-
       } else {
           this.errorMessage1 = " Stock label is not valid!";
           console.log('Stock label is not present in the list.');
       }
-    })
+    });
 
    }
+  sendEmailNotification(formData: any){
+    let str: string = "";
+    if(formData.buyOrSell == "BUY" || formData.buyOrSell == "buy")
+      str = " Stock bought";
+    else if(formData.buyOrSell == "SELL" || formData.buyOrSell == "sell")
+      str = " Stock sold";
+    const templateParams = {
+      to_name: 'User_01', 
+      from_name: 'Rakshaa', 
+      message: `Confirmation:  ${formData.stockTicker} - ${str} at Price: $ ${formData.price}`
+  };
+
+    const serviceID = 'service_gv154qq'; 
+    const templateID = 'template_v81lyvp'; 
+    const userID = '-MeW1meg0waZdxgKc';
+
+    this.emailService.send(serviceID, templateID, templateParams, userID)
+      .then((response) => {
+          console.log('Email sent successfully:', response);
+      })
+      .catch((error) => {
+          console.error('Error sending email:', error);
+      });
+  }
 }
 
 
