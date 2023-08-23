@@ -13,6 +13,7 @@ import * as emailjs from 'emailjs-com';
 })
 export class AddStockComponent implements OnInit{
 apiUrl = 'http://localhost:8080/check-ticker';
+priceUrl = "https://marketdata.multicode.uk/API/PseudoFeed";
 emailService = emailjs;
 stockId: number;
 
@@ -47,7 +48,7 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
     this.errorMessage4= "";
     this.errorMessage5= "";
 
-
+    //Check stockTicker from external API
     this.httpClient.get<string>(`${this.apiUrl}?stockTicker=${stockTicker}`)
     .subscribe(
       response => {
@@ -115,6 +116,7 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
               {
                 alert("Stock added with ID: " + data.id);
                 //this.sendEmailNotification(formData); //DO NOT UNCOMMENT, mail feature is limited to 10 mails, already 4 used
+                this.router.navigate(['/view']);
               },
               error: error => alert("Something went wrong! " + error)
             })
@@ -128,8 +130,29 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
           console.log('Stock label is not present in the list.');
       }
     });
-
    }
+
+  //Retrieve price from external API 
+  retrievePrice(){
+    const arr = [];
+    this.httpClient.get(`${this.priceUrl}/${this.newStockForm.value.stockTicker}`, {responseType: 'text'}).subscribe(
+      data => {
+        const stockTicker = this.newStockForm.value.stockTicker;
+        for(let i = 0; i<data.length; i++)
+        {
+          if(data[i]>= '0' && data[i] <= '9')
+            arr.push(data[i]);
+        }
+        const numberValue1 = Number(arr.join(''));
+        this.newStockForm.get("price").setValue(numberValue1);
+    },
+      error => {
+        console.error("Error fetching market data:", error);
+      }
+    );
+  }
+
+  //Send email upon successfull BUY/ SELL
   sendEmailNotification(formData: any){
     let str: string = "";
     if(formData.buyOrSell == "BUY" || formData.buyOrSell == "buy")
