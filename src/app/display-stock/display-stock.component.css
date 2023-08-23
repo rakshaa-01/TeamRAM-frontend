@@ -41,17 +41,17 @@ tr:nth-child(even) {
   }
 }
 @media only screen and (max-width: 600px) {
- table {
+ table, button {
     font-size:small;
   }
 }
 @media only screen and (max-width: 420px) {
-  table {
+  table, button {
      font-size:xx-small;
    }
  }
  @media only screen and (max-width: 330px) {
-  table {
+  table, button {
      font-size:5%;
    }
  }

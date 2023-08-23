@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RestRequestsService } from '../services/rest-requests.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete-stock',
@@ -9,7 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class DeleteStockComponent{
  
-  constructor(private restService: RestRequestsService) {}
+  constructor(private restService: RestRequestsService, private router: Router) {}
   errormsg: string = "";
   successmsg: string = "";
   id1: number | null | undefined;
@@ -32,6 +33,7 @@ export class DeleteStockComponent{
     () => {
       this.successmsg = ' Stock order: ' + this.id1 + ' deleted successfully';
       console.log('Stock order: ' + this.id1 +' deleted successfully');
+      this.router.navigate(['/view']);
     },
     (error) => {
       if (error.status === 404) {
