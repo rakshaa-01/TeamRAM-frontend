@@ -25,4 +25,9 @@ export class RestRequestsService {
     //const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     //return this.httpClient.delete(`${this.liveServerUrl}/stock/${id}`, {headers, responseType: 'text'});
   }
+  
+  updateStock(id: number, stockDetails: Stock): Observable<Stock> {
+    const url = `${this.liveServerUrl}/stock/${id}`;
+    return this.httpClient.put<Stock>(url, stockDetails);
+  }
 }

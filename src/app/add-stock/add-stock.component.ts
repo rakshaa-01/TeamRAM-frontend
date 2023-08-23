@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Stock } from '../dataModel/Stock';
 import { RestRequestsService } from '../services/rest-requests.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as emailjs from 'emailjs-com';
 
 @Component({
@@ -10,12 +11,19 @@ import * as emailjs from 'emailjs-com';
   templateUrl: './add-stock.component.html',
   styleUrls: ['./add-stock.component.css']
 })
-export class AddStockComponent {
+export class AddStockComponent implements OnInit{
 apiUrl = 'http://localhost:8080/check-ticker';
 emailService = emailjs;
+stockId: number;
 
-constructor(private restService: RestRequestsService, private httpClient: HttpClient) {}
-
+constructor(private restService: RestRequestsService, private httpClient: HttpClient, private route: ActivatedRoute, private router: Router) {}
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.stockId = +params.get('id');
+      console.log('Stock ID:', this.stockId);
+    });
+  }
+ 
     errorMessage1= "";
     errorMessage2= "";
     errorMessage3= "";
@@ -86,7 +94,22 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
            // shortcut: 
            // const stock1: Stock = {id:0, ...this.newStockForm.value}
            // console.log(stock1)
-      
+
+           if(this.stockId)
+           {
+            //Update stock logic
+            this.restService.updateStock(this.stockId, stock).subscribe(
+              { next: data => 
+                {
+                  alert("Stock updated with ID: " + data.id);
+                  //this.sendEmailNotification(formData); //DO NOT UNCOMMENT, mail feature is limited to 10 mails, already 4 used
+                  this.router.navigate(['/view']);
+                },
+                error: error => alert("Something went wrong! " + error)
+            });
+           }
+      else
+      {
            this.restService.addStock(stock).subscribe(
             { next: data => 
               {
@@ -95,9 +118,12 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
               },
               error: error => alert("Something went wrong! " + error)
             })
+      }
+
            console.log(stock);
           }
-      } else {
+      } 
+      else {
           this.errorMessage1 = " Stock label is not valid!";
           console.log('Stock label is not present in the list.');
       }
@@ -128,6 +154,7 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
           console.error('Error sending email:', error);
       });
   }
+
 }
 
 

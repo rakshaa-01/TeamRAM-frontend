@@ -10,6 +10,7 @@
         <th>Volume</th>
         <th>BUY/ SELL</th>
         <th>Status Code</th>
+        <th>Update</th>
      </tr>
    </thead>
    <tbody>
@@ -20,6 +21,13 @@
         <td>{{stock.volume}}</td>
         <td>{{stock.buyOrSell}}</td>
         <td>{{stock.statusCode}}</td>
+        <td>
+         <button class="style-button" style="vertical-align:middle" role="edit" style="font-weight: bold" (click) = "editStock(stock.id)">
+         <span>     
+            Edit
+         </span>
+         </button>
+          </td>
      </tr>
    </tbody>
 </table>

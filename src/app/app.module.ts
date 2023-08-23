@@ -13,11 +13,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
   const routes: Routes =[
-  {path: "view", component:DisplayStockComponent},
-  {path: "add", component:AddStockComponent},
-  {path:"del", component:DeleteStockComponent},
-  {path: "", component:HomePageComponent},
-  {path: "**", component:HomePageComponent}
+  {path: "view", component: DisplayStockComponent},
+  {path: "add", component: AddStockComponent},
+  {path: "add/:id", component: AddStockComponent},
+  {path:"del", component: DeleteStockComponent},
+  {path: "", component: HomePageComponent},
+  {path: "**", component: HomePageComponent}
 ];
 // const routerOptions: ExtraOptions = {
 //   anchorScrolling: "enabled"
