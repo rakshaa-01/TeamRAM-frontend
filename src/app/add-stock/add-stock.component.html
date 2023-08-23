@@ -29,6 +29,9 @@
     <span style="color:red">{{errorMessage5}}</span>
     <h6>[0 - Pending, 1 - Filled, 2 - Rejected] </h6>
 
-    <button class="submit-button" type="Submit">-- Add --</button>
+    <button *ngIf="!stockId; else updateButton" class="submit-button"><b> Add </b></button>
+    <ng-template #updateButton>
+      <button class="submit-button"><b> Update </b></button>
+    </ng-template>
 </form>
 

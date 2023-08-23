@@ -1,15 +1,33 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
+    text-align: center;
     width: 100%;
   }
   
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid #cbcac9;
     text-align: left;
     padding: 8px;
-  }
-  
+    text-align: center;
+}
+
+.style-button{
+  background-color: #fac095;
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+  padding: 5px 20px;
+  text-align: center;
+  transition-duration: 0.4s;
+}
+.style-button:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: black;
+  color: white;
+}
+
+
 tr:nth-child(even) {
     background-color: #dddddd;
   }

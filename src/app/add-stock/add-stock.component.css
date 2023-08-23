@@ -1,6 +1,7 @@
 .submit-button{
     color: black;
     background-color: rgb(109, 233, 109);
+    cursor: pointer;
 }
 *{
     box-sizing: border-box;
