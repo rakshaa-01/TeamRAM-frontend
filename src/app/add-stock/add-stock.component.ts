@@ -5,6 +5,7 @@ import { Stock } from '../dataModel/Stock';
 import { RestRequestsService } from '../services/rest-requests.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as emailjs from 'emailjs-com';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-add-stock',
@@ -12,7 +13,7 @@ import * as emailjs from 'emailjs-com';
   styleUrls: ['./add-stock.component.css']
 })
 export class AddStockComponent implements OnInit{
-apiUrl = 'http://localhost:8080/check-ticker';
+apiUrl = environment.apiUrl;
 priceUrl = "https://marketdata.multicode.uk/API/PseudoFeed";
 emailService = emailjs;
 stockId: number;

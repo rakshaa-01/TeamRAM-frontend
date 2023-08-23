@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 import { Stock } from '../dataModel/Stock';
 
@@ -8,7 +9,7 @@ import { Stock } from '../dataModel/Stock';
 })
 export class RestRequestsService {
   constructor(private httpClient: HttpClient) { }
-  liveServerUrl: string= "http://localhost:8080";
+  liveServerUrl: string = environment.liveServerUrl;
   private apiUrl: string = 'https://v588nmxc10.execute-api.us-east-1.amazonaws.com/default/tickerList';
 
   getStocks(): Observable<Stock[]> {
