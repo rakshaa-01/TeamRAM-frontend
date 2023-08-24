@@ -1,10 +1,11 @@
+*{
+  box-sizing: border-box; 
+  font-size: x-large;  
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 .submit-button{
     color: black;
     background-color: rgb(237, 117, 87);
-}
-*{
-    box-sizing: border-box;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 @media only screen and (max-width: 600px) {
     form {

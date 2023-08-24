@@ -92,6 +92,7 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
             this.errorMessage3= "";
             this.errorMessage4= "";
             
+            
            const stock: Stock={
            id: 0, 
            stockTicker: this.newStockForm.value.stockTicker!,
