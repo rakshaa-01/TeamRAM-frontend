@@ -42,6 +42,7 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
 
    handleSubmit() {
     const stockTicker = this.newStockForm.value.stockTicker;
+    const statusCode = this.newStockForm.value.statusCode;
     const formData = this.newStockForm.value;
     this.errorMessage1= "";
     this.errorMessage2= "";
@@ -73,9 +74,16 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
           {
             this.errorMessage4 = " Buy or Sell value cannot be empty!";
           }
-          else if(this.newStockForm.value.statusCode == null)
+          else if(statusCode)
           {
-            this.errorMessage5 = " Status Code cannot be empty!";
+            if(statusCode == 0)
+              this.errorMessage5 = " Pending order";
+            else if(statusCode == 1)
+              this.errorMessage5 = " Processing order";
+            else if(statusCode == 2)
+              this.errorMessage5 = " Order successful";
+            else(statusCode == 3)
+              this.errorMessage5 = " Order failed";
           }
         
           else{
@@ -83,7 +91,6 @@ constructor(private restService: RestRequestsService, private httpClient: HttpCl
             this.errorMessage2= "";
             this.errorMessage3= "";
             this.errorMessage4= "";
-            this.errorMessage5= "";
             
            const stock: Stock={
            id: 0, 
