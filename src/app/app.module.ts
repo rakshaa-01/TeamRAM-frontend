@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewChartComponent } from './view-chart/view-chart.component';
 
 
   const routes: Routes =[
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   {path: "add", component: AddStockComponent},
   {path: "add/:id", component: AddStockComponent},
   {path:"del", component: DeleteStockComponent},
+  {path:"chart", component: ViewChartComponent},
   {path: "", component: HomePageComponent},
   {path: "**", component: HomePageComponent}
 ];
@@ -32,7 +34,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DisplayStockComponent,
     AddStockComponent,
     DeleteStockComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    ViewChartComponent
   ],
   imports: [
     BrowserModule,
