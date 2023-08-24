@@ -1,5 +1,6 @@
 *{
-  box-sizing: border-box;  
+  box-sizing: border-box;
+  font-size: x-large;  
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 /* Removing the profile picture if screen width < 500 px */
@@ -52,7 +53,7 @@ nav{
 #logo1{
   position:absolute;
   top:3px;
-  left:57px;
+  left:88px;
   height: auto;
   width: 18%;
   border-radius: 0%;
@@ -80,6 +81,7 @@ nav{
 }
 .hoverable .hover-text{
   position: absolute;
+  font-size: small;
   display: none;
   top: 50%;
   left:  50%;
