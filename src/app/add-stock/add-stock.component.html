@@ -28,9 +28,9 @@
     <br><br>
 
     <label for ="statusCode" style="margin-right:10px">StatusCode: (0/1/2)</label>
-    <input type="number" id ="statusCode" formControlName = "statusCode">
+    <input type="number" id ="statusCode" formControlName = "statusCode" readonly>
     <span style="color:red">{{errorMessage5}}</span>
-    <h6>[0 - Pending, 1 - Filled, 2 - Rejected] </h6>
+    <h6>[0 - Pending, 1 - Processing, 2 - Success, 3 - Failed] </h6>
 
     <button *ngIf="!stockId; else updateButton" class="submit-button"><b> Add </b></button>
     <ng-template #updateButton>
